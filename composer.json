@@ -1,0 +1,17 @@
+{
+    "name": "mario-legenda/ebay-api-base-classes",
+    "description": "Base classes for Ebay API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mario Skrlec",
+            "email": "mario@locastic.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": {
+            "EbayBase": "src/"
+        }
+    }
+}
