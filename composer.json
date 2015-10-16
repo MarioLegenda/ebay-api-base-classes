@@ -2,6 +2,7 @@
     "name": "mario-legenda/ebay-api-base-classes",
     "description": "Base classes for Ebay API",
     "license": "MIT",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "Mario Skrlec",
