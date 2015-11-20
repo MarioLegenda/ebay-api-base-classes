@@ -23,11 +23,12 @@ class Configuration implements \IteratorAggregate
             'global-id',
             'endpoint',
             'pagination',
+            'request-type' => 'GET',
         );
 
         foreach ($configuration as $configKey => $configValue) {
             if (in_array($configKey, $validity) === false) {
-                throw new ConfigurationException("Configuration value ".$configValue." is not a valid configuration value. Allowed configuration is: operation-name, service-version, security-appname, global-id, endpoint, pagination");
+                throw new ConfigurationException("Configuration value ".$configKey." is not a valid configuration value. Allowed configuration is: operation-name, service-version, security-appname, global-id, endpoint, pagination");
             }
         }
 
@@ -72,140 +73,11 @@ class Configuration implements \IteratorAggregate
     }
 
     /**
-     * @param $endpoint
-     */
-    public function setEndpoint($endpoint)
-    {
-        $this->configuration['endpoint'] = $endpoint;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getEndpoint()
-    {
-        if ($this->hasConfiguration('endpoint')) {
-            return $this->getConfiguration('endpoint');
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $operationName
-     */
-    public function setOperationName($operationName)
-    {
-        $this->configuration['operation-name'] = $operationName;
-
-        return $this;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getOperationName()
-    {
-        if ($this->hasConfiguration('operation-name')) {
-            return $this->getConfiguration('operation-name');
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $serviceVersion
-     */
-    public function setServiceVersion($serviceVersion)
-    {
-        $this->configuration['service-version'] = $serviceVersion;
-
-        return $this;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getServiceVersion()
-    {
-        if ($this->hasConfiguration('service-version')) {
-            return $this->getConfiguration('service-version');
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $appname
-     */
-    public function setSecurityAppName($appname)
-    {
-        $this->configuration['security-appname'] = $appname;
-
-        return $this;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getSecurityAppName()
-    {
-        if ($this->hasConfiguration('security-appname')) {
-            return $this->getConfiguration('security-appname');
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $globalId
-     */
-    public function setGlobalId($globalId)
-    {
-        $this->configuration['global-id'] = $globalId;
-
-        return $this;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getGlobalId()
-    {
-        if ($this->hasConfiguration('global-id')) {
-            return $this->getConfiguration('global-id');
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $pagination
-     * @throws ConfigurationException
-     */
-    public function setPagination($pagination)
-    {
-        $this->configuration['pagination'] = $pagination;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getPagination()
-    {
-        if ($this->hasConfiguration('pagination')) {
-            return $this->getConfiguration('pagination');
-        }
-
-        return null;
-    }
-
-    /**
      * @return array
      */
     public function getIterator()
     {
-        return $this->configuration;
+        return new \ArrayIterator($this->configuration);
     }
 
     private function addDefaults(array $configuration)
@@ -216,6 +88,10 @@ class Configuration implements \IteratorAggregate
 
         if (!array_key_exists('endpoint', $configuration)) {
             $configuration['endpoint'] = 'http://svcs.ebay.com/services/search/FindingService/v1';
+        }
+
+        if (!array_key_exists('request-type', $configuration)) {
+            $configuration['request-type'] = 'GET';
         }
 
         return $configuration;
