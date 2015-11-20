@@ -23,13 +23,34 @@ class Configuration implements \IteratorAggregate
             'global-id',
             'endpoint',
             'pagination',
-            'request-type' => 'GET',
+            'request-method',
+            'transfer-type',
         );
 
         foreach ($configuration as $configKey => $configValue) {
             if (in_array($configKey, $validity) === false) {
                 throw new ConfigurationException("Configuration value ".$configKey." is not a valid configuration value. Allowed configuration is: operation-name, service-version, security-appname, global-id, endpoint, pagination");
             }
+        }
+
+        $requestMethod = strtolower($configuration['request-method']);
+
+        if ($requestMethod !== 'POST' and $requestMethod !== 'GET') {
+            throw new ConfigurationException('Configuration value reguest-method can only get GET or POST');
+        }
+
+        $transferType = strtolower($configuration['transfer-type']);
+
+        if ($transferType !== 'url' and $transferType !== 'xml') {
+            throw new ConfigurationException('Configuration value transfer-type can only be url or xml');
+        }
+
+        if ($transferType === 'url' and $requestMethod === 'post') {
+            throw new ConfigurationException('If request-method is POST, then transfer-type has to be xml');
+        }
+
+        if ($transferType === 'xml' and $requestMethod === 'get') {
+            throw new ConfigurationException('If request-method is GET, then transfer-type has to be url');
         }
 
         $this->configuration = $configuration;
