@@ -35,8 +35,8 @@ class Configuration implements \IteratorAggregate
 
         $requestMethod = strtolower($configuration['request-method']);
 
-        if ($requestMethod !== 'POST' or $requestMethod !== 'GET') {
-            throw new ConfigurationException('Configuration value reguest-method can only get GET or POST');
+        if ($requestMethod !== 'post' and $requestMethod !== 'get') {
+            throw new ConfigurationException('Configuration value reguest-method can only be GET or POST');
         }
 
         $transferType = strtolower($configuration['transfer-type']);
