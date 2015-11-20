@@ -41,7 +41,7 @@ class Configuration implements \IteratorAggregate
 
         $transferType = strtolower($configuration['transfer-type']);
 
-        if ($transferType !== 'url' or $transferType !== 'xml') {
+        if ($transferType !== 'url' and $transferType !== 'xml') {
             throw new ConfigurationException('Configuration value transfer-type can only be url or xml');
         }
 
