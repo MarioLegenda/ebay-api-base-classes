@@ -111,10 +111,6 @@ class Configuration implements \IteratorAggregate
             $configuration['endpoint'] = 'http://svcs.ebay.com/services/search/FindingService/v1';
         }
 
-        if (!array_key_exists('request-type', $configuration)) {
-            $configuration['request-type'] = 'GET';
-        }
-
         return $configuration;
     }
 }
