@@ -7,5 +7,5 @@ interface EvaluatorTypeInterface
     /**
      * @return bool
      */
-    public function evaluate();
+    public function evaluate(TypeStorage $typeStorage = null);
 }
