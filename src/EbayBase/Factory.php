@@ -27,7 +27,6 @@ class Factory
 
         return self::$instance;
     }
-
     /**
      * @param array $factoryClosures
      */
@@ -35,7 +34,6 @@ class Factory
     {
         $this->factoryClosures = $factoryClosures;
     }
-
     /**
      * @param array $dependencies
      */
@@ -43,7 +41,6 @@ class Factory
     {
         $this->factoryClosures = $dependencies;
     }
-
     /**
      * @param array $arguments
      *
@@ -55,7 +52,6 @@ class Factory
 
         return $this;
     }
-
     /**
      * @param $decidingArgument
      *
@@ -67,7 +63,6 @@ class Factory
 
         return $this;
     }
-
     /**
      * @param \Closure $factoryCreator
      *
@@ -79,7 +74,6 @@ class Factory
 
         return $this;
     }
-
     /**
      * @param bool $isSingelton
      *

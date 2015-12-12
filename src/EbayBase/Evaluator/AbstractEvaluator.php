@@ -1,6 +1,6 @@
 <?php
 
-namespace EbayBase\SyntaxEvaluator\Evaluators;
+namespace EbayBase\Evaluator;
 
 abstract class AbstractEvaluator
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EbayBase\SyntaxEvaluator;
+namespace EbayBase\Evaluator;
 
 interface EvaluatorTypeInterface
 {
