@@ -118,6 +118,8 @@ class Configuration implements ConfigurationInterface
     public function setPagination($entriesPerPage = 10, $pageNumber = 1)
     {
         $this->pagination = new Paginator($entriesPerPage, $pageNumber);
+
+        return $this;
     }
 
     /**
@@ -134,6 +136,8 @@ class Configuration implements ConfigurationInterface
     public function sortBy($sort)
     {
         $this->sort = new Sorter($sort);
+
+        return $this;
     }
 
     /**
