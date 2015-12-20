@@ -3,6 +3,8 @@
 namespace EbayBase\Configuration;
 
 use EbayBase\Exception\ConfigurationException;
+use EbayBase\Paginator\Paginator;
+use EbayBase\Paginator\Sorter;
 
 class Configuration implements ConfigurationInterface
 {
@@ -14,6 +16,7 @@ class Configuration implements ConfigurationInterface
     private $pagination;
     private $requestMethod;
     private $transferType;
+    private $sort;
 
     /**
      * @param $operationName
@@ -108,16 +111,13 @@ class Configuration implements ConfigurationInterface
     {
         return $this->globalId;
     }
-
     /**
-     * @param $pagination
-     * @return $this
+     * @param int $entriesPerPage
+     * @param int $pageNumber
      */
-    public function setPagination($pagination)
+    public function setPagination($entriesPerPage = 10, $pageNumber = 1)
     {
-        $this->pagination = $pagination;
-
-        return $this;
+        $this->pagination = new Paginator($entriesPerPage, $pageNumber);
     }
 
     /**
@@ -126,6 +126,22 @@ class Configuration implements ConfigurationInterface
     public function getPagination()
     {
         return $this->pagination;
+    }
+
+    /**
+     * @param string $sort
+     */
+    public function sortBy($sort)
+    {
+        $this->sort = new Sorter($sort);
+    }
+
+    /**
+     * @returns string
+     */
+    public function getSorted()
+    {
+        $this->sort->getSorted();
     }
 
     /**
