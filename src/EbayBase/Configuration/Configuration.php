@@ -143,9 +143,9 @@ class Configuration implements ConfigurationInterface
     /**
      * @returns string
      */
-    public function getSorted()
+    public function getSorter()
     {
-        $this->sort->getSorted();
+        return $this->sort;
     }
 
     /**
