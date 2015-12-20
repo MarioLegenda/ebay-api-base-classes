@@ -8,6 +8,15 @@ class Configuration implements \IteratorAggregate
 {
     private $configuration;
 
+    private $operationName;
+    private $serviceVersion;
+    private $securityAppname;
+    private $globalId;
+    private $endpoint;
+    private $pagination;
+    private $requestMethod;
+    private $transferType;
+
     /**
      * @param array $configuration
      * @throws ConfigurationException
@@ -54,6 +63,157 @@ class Configuration implements \IteratorAggregate
         }
 
         $this->configuration = $configuration;
+    }
+
+    /**
+     * @param $operationName
+     * @return $this
+     */
+    public function setOperationName($operationName)
+    {
+        $this->operationName = $operationName;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getOperationName()
+    {
+        return $this->operationName;
+    }
+
+    /**
+     * @param $endpoint
+     * @return $this
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * @param $serviceVersion
+     * @return $this
+     */
+    public function setServiceVersion($serviceVersion)
+    {
+        $this->serviceVersion = $serviceVersion;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServiceVersion()
+    {
+        return $this->serviceVersion;
+    }
+
+    /**
+     * @param $securityAppname
+     * @return $this
+     */
+    public function setSecurityAppname($securityAppname)
+    {
+        $this->securityAppname = $securityAppname;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSecurityAppname()
+    {
+        return $this->securityAppname;
+    }
+
+    /**
+     * @param $globalId
+     * @return $this
+     */
+    public function setGlobalId($globalId)
+    {
+        $this->globalId = $globalId;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGlobalId()
+    {
+        return $this->globalId;
+    }
+
+    /**
+     * @param $pagination
+     * @return $this
+     */
+    public function setPagination($pagination)
+    {
+        $this->pagination = $pagination;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPagination()
+    {
+        return $this->pagination;
+    }
+
+    /**
+     * @param $requestMethod
+     * @return $this
+     */
+    public function setRequestMethod($requestMethod)
+    {
+        $this->requestMethod = $requestMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestMethod()
+    {
+        return $this->requestMethod;
+    }
+
+    /**
+     * @param $transferType
+     * @return $this
+     */
+    public function setTransferType($transferType)
+    {
+        $this->transferType = $transferType;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransferType()
+    {
+        return $this->transferType;
     }
 
     /**
