@@ -198,6 +198,28 @@ class Configuration implements ConfigurationInterface
             throw new ConfigurationException('Invalid endpoint. Endpoint has to be a string');
         }
 
-        
+        if (!is_string($this->requestMethod)) {
+            throw new ConfigurationException('Invalid request method. Request method can be GET or POST');
+        }
+
+        $requestMethod = strtolower($this->requestMethod);
+
+        if ($requestMethod !== 'post' and $requestMethod !== 'get') {
+            throw new ConfigurationException('Configuration value reguest-method can only be GET or POST');
+        }
+
+        $transferType = strtolower($this->transferType);
+
+        if ($transferType !== 'url' and $transferType !== 'xml') {
+            throw new ConfigurationException('Configuration value transfer-type can only be url or xml');
+        }
+
+        if ($transferType === 'url' and $requestMethod === 'post') {
+            throw new ConfigurationException('If request-method is POST, then transfer-type has to be xml');
+        }
+
+        if ($transferType === 'xml' and $requestMethod === 'get') {
+            throw new ConfigurationException('If request-method is GET, then transfer-type has to be url');
+        }
     }
 }
