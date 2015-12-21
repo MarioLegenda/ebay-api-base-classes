@@ -39,6 +39,6 @@ class Sorter
      */
     public function getSorted()
     {
-        return 'sortOrder='.$this->sort;
+        return '&sortOrder='.$this->sort;
     }
 }

@@ -47,13 +47,13 @@ class Paginator
      */
     public function getEntriesPerPage()
     {
-        return 'paginationInput.entriesPerPage='.$this->entriesPerPage;
+        return '&paginationInput.entriesPerPage='.$this->entriesPerPage;
     }
     /**
      * @return string
      */
     public function getPageNumber()
     {
-        return 'paginationInput.pageNumber='.$this->pageNumber;
+        return '&paginationInput.pageNumber='.$this->pageNumber;
     }
 }
