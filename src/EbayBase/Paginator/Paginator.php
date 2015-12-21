@@ -23,6 +23,26 @@ class Paginator
         $this->pageNumber = $pageNumber;
     }
     /**
+     * @param int $entriesPerPage
+     * @return $this
+     */
+    public function setEntriesPerPage($entriesPerPage = 10)
+    {
+        $this->entriesPerPage = $entriesPerPage;
+
+        return $this;
+    }
+    /**
+     * @param $pageNumber
+     * @return $this
+     */
+    public function setPageNumber($pageNumber)
+    {
+        $this->pageNumber = $pageNumber;
+
+        return $this;
+    }
+    /**
      * @return string
      */
     public function getEntriesPerPage()

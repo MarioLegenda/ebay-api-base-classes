@@ -19,6 +19,14 @@ class Configuration implements ConfigurationInterface
     private $sort;
 
     /**
+     * @void
+     */
+    public function __construct()
+    {
+        $this->pagination = new Paginator(10, 1);
+        $this->sort = new Sorter(Sorter::BEST_MATCH);
+    }
+    /**
      * @param $operationName
      * @return $this
      */
@@ -115,9 +123,11 @@ class Configuration implements ConfigurationInterface
      * @param int $entriesPerPage
      * @param int $pageNumber
      */
-    public function setPagination($entriesPerPage = 10, $pageNumber = 1)
+    public function setPagination($entriesPerPage, $pageNumber)
     {
-        $this->pagination = new Paginator($entriesPerPage, $pageNumber);
+        $this->pagination
+            ->setEntriesPerPage($entriesPerPage)
+            ->setPageNumber($pageNumber);
 
         return $this;
     }
@@ -135,7 +145,7 @@ class Configuration implements ConfigurationInterface
      */
     public function sortBy($sort)
     {
-        $this->sort = new Sorter($sort);
+        $this->sort->setSort($sort);
 
         return $this;
     }
